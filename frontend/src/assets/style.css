@@ -24,7 +24,7 @@ body {
     }
 }
 
-header {
+.Main-img {
     background-image: url('./img/backgroun-header.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -122,6 +122,7 @@ ul li a:hover {
     text-align: center;
     display: flex;
     background-color: rgba(223, 220, 210, 0.4);
+    justify-content: space-between;
 }
 
 .nav-dream-house {
@@ -155,7 +156,6 @@ ul li a:hover {
 .input-header {
     width: 95%;
     text-align: right;
-    margin: 10px;
 }
 .input-header-sales-rent {
     width: 25%;
@@ -425,34 +425,62 @@ footer {
     margin-bottom: 40px;
 }
 
+/************loguin*****************************************************/
+
+.login {
+    width: 400px;
+    background-color: #ebd9d9d9;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    position: absolute;
+    top: 14%;
+    left: 30%;
+}
+
+.login .logo img {
+    margin: 5px;
+    width: 150px;
+}
 /**-*-*-*-*-*-*-*-*-*form-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 
-form {
+.form-loguin {
+    width: 100%;
     flex-direction: column;
-
-    margin: 34px;
-
     display: flex;
+    align-content: flex-start;
 }
-form input {
-    width: 75%;
-    height: 30px;
+.form-loguin input {
+    width: 85%;
+    height: 45px;
     border-radius: 5px;
     border: 1px solid rgb(109, 108, 107);
     margin: 5px;
+    margin-left: 7%;
 }
-form .btn {
-    background-color: rgb(68, 68, 201);
+.form-loguin .button-input {
+    background-color: rgb(31 31 203);
     color: white;
-    width: 100px;
-    height: 25px;
-    margin-top: 15px;
+    width: 151px;
+    height: 46px;
+    margin-top: 13px;
+    margin-bottom: 16px;
+    font-size: 18px;
+    margin-left: 29%;
+    cursor: pointer;
+}
+.form-loguin .button-input:hover {
+    background-color: rgb(39, 38, 38);
 }
 
-form h4,
+.form-loguin h4,
 h6 {
     color: rgb(56, 54, 54);
-    margin-left: 6px;
+    margin-left: 7%;
 }
 /************************************cajas***********************************************/
 
