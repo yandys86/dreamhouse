@@ -5,5 +5,5 @@ from rest_framework import serializers
 
 class FavouriteSerializer(serializers.ModelSerializer):
     class Meta:
-        model: Favourite
+        model = Favourite
         fields = '__all__'
