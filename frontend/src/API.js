@@ -1,13 +1,13 @@
 import axios from 'axios';
-const LOGIN_USER_KEY = 'WD_FORUM_LOGIN_USER_KEY';
+export const LOGIN_USER_KEY = 'HOME_LOGIN_USER_KEY';
 
 var baseURL;
-/*if (process.env.REACT_APP_ENVIRONMENT && process.env.REACT_APP_ENVIRONMENT === 'PRODUCTION') {
+if (process.env.REACT_APP_ENVIRONMENT && process.env.REACT_APP_ENVIRONMENT === 'PRODUCTION') {
     baseURL = process.env.REACT_APP_API_BASE_URL;
 } else {
     baseURL = 'http://127.0.0.1:8000';
-}*/
-baseURL = 'https://backend-yandys.herokuapp.com/'
+}
+//baseURL = 'https://backend-yandys.herokuapp.com/'
 
 const api = axios.create({
     baseURL: baseURL,
@@ -63,5 +63,38 @@ export default class API {
         return api.delete(`/posts/delete/${id}/`).catch(error => {
             throw new Error(error);
         });
+    };
+
+    //******************************************************* */
+
+    signUp = async (user_name, email, password) => {
+        const savePost = await api
+            .post('/users/signup/', {
+                user_name: user_name,
+                email: email,
+                password: password
+            })
+            .then(response => {
+                return response.data;
+            })
+            .catch(error => {
+                throw new Error(error);
+            });
+        return savePost;
+    };
+
+    signIn = async (email, password) => {
+        const savePost = await api
+            .post('/users/signin/', {
+                email: email,
+                password: password
+            })
+            .then(response => {
+                return response.data;
+            })
+            .catch(error => {
+                throw new Error(error);
+            });
+        return savePost;
     };
 }

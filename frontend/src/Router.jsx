@@ -14,13 +14,13 @@ const Router = () => {
         <>
             <Switch>
                 <Route exact path={'/'} component={Home} />
-                <Route exact path={'/Saleshouselist.jsx'} component={Saleshouselist} />
-                <Route exact path={'/Sellhouse.jsx'} component={Sellhouse} />
-                <Route exact path={'/Renthouselist.jsx'} component={Renthouselist} />
-                <Route exact path={'/Savehouse.jsx'} component={Savehouse} />
-                <Route exact path={'/ViewHome.jsx'} component={ViewHome} />
-                <Route exact path={'/SignUp.jsx'} component={SignUp} />
-                <Route exact path={'/SignIn.jsx'} component={SignIn} />
+                <Route exact path={'/Saleshouselist'} component={Saleshouselist} />
+                <Route exact path={'/Sellhousex'} component={Sellhouse} />
+                <Route exact path={'/Renthouselist'} component={Renthouselist} />
+                <Route exact path={'/Savehouse'} component={Savehouse} />
+                <Route exact path={'/ViewHome'} component={ViewHome} />
+                <Route exact path={'/Signup'} component={SignUp} />
+                <Route exact path={'/Signin'} component={SignIn} />
             </Switch>
         </>
     );
