@@ -1,46 +1,19 @@
 import React from 'react';
 import '../assets/style.css';
 import logo from '../assets/img/logo.png';
-import usericon from '../assets/img/user-icon.png';
+import SelectOption from '../components/Common/SelectOption';
+import SearchInput from '../components/Common/SearchInput';
+import Logo from '../components/Common/Logo';
+import Footer from '../components/Common/Footer';
 
 const Sellhouse = () => {
     return (
-        <div>
+        <>
             <header className="header-sellhouse">
                 <div className="navbar-sales-rent">
-                    <div className="av-dream-house-sales-rent">
-                        <a className="navbar-brand" href="/">
-                            <img width="100" className="h-home" alt="" src={logo} />
-                        </a>
-                    </div>
-
-                    <div className="input-header-sales-rent">
-                        <input type="text" placeholder="Search" />
-                    </div>
-
-                    <div className="user">
-                        <img src={usericon} alt="" />
-                        <select name="user" id="user">
-                            <option value="User">User name</option>
-                            <option value="User">Save Home</option>
-                            <option value="User">Buy a Home</option>
-                            <option value="User">Sell a Home</option>
-                            <option value="User">Rent a Home</option>
-                            <option value="User">Log Out</option>
-                        </select>
-                    </div>
-                    <div className="user2">
-                        <img src={usericon} alt="" />
-                        <select name="user" id="user">
-                            <option value="User"></option>
-                            <option value="User">User name</option>
-                            <option value="User">Save Home</option>
-                            <option value="User">Buy a Home</option>
-                            <option value="User">Sell a Home</option>
-                            <option value="User">Rent a Home</option>
-                            <option value="User">Log Out</option>
-                        </select>
-                    </div>
+                    <Logo />
+                    <SearchInput />
+                    <SelectOption />
                 </div>
 
                 <div class="text-content">
@@ -67,7 +40,7 @@ const Sellhouse = () => {
 
             <div className="clearfix"></div>
 
-            <form action="post" className="form">
+            <form className="form">
                 <label for="">
                     <h4>Input your home information to get counselling.</h4>
                     <br />
@@ -80,26 +53,20 @@ const Sellhouse = () => {
                 <label for="size">
                     <h6>How much Square feet is your building?</h6>
 
-                    <input type="text" placeholder="Enter the area size of house " />
+                    <input type="text" placeholder="Enter your home size (sq. ft.)" />
                 </label>
 
                 <label for="age">
                     <h6>How old is your building?</h6>
 
-                    <input type="text" placeholder="Enter the age of building" />
+                    <input type="text" placeholder="Enter the age of building(ex. 1986)" />
                 </label>
 
                 <input type="submit" className="btn" />
             </form>
 
-            <footer>
-                <div className="nav-dream-house">
-                    <a className="navbar-brand" href="/">
-                        <img width="100" className="h-home" alt="" src={logo} />
-                    </a>
-                </div>
-            </footer>
-        </div>
+            <Footer />
+        </>
     );
 };
 

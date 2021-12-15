@@ -13,7 +13,7 @@ function HomeCard() {
                         Find your place with an immersive photo experience and the most listings, including things you
                         won’t find anywhere else.
                     </p>
-                    <a href="./Saleshouselist.jsx">Search Home</a>
+                    <a href="./Saleshouselist">Search Home</a>
                 </div>
             </div>
         </>

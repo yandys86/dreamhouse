@@ -634,3 +634,14 @@ h6 {
     background: #c8d4d6;
     color: #fff;
 }
+
+/*******************Form Sell******************************************/
+
+.form {
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: nowrap; */
+    align-items: center;
+    gap: 5px;
+}
