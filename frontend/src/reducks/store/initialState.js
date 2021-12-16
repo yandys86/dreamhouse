@@ -5,6 +5,9 @@ const initialState = {
         next: null,
         previous: null
     },
+    tags: {
+        list: []
+    },
     user: {}
 };
 

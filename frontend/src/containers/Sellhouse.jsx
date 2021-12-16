@@ -1,12 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../assets/style.css';
-import logo from '../assets/img/logo.png';
 import SelectOption from '../components/Common/SelectOption';
 import SearchInput from '../components/Common/SearchInput';
 import Logo from '../components/Common/Logo';
 import Footer from '../components/Common/Footer';
+import { push } from 'connected-react-router';
+import { useDispatch } from 'react-redux';
+import { sellrequest } from '../reducks/request/operations';
 
 const Sellhouse = () => {
+    const dispatch = useDispatch();
+    const [address, setAddress] = useState('');
+    const [sqft, setSqft] = useState('');
+    const [age_building, setAge_building] = useState('');
+
+    const inputAddress = e => {
+        setAddress(e.target.value);
+    };
+
+    const inputSqft = e => {
+        setSqft(e.target.value);
+    };
+
+    const inputAge_Building = e => {
+        setAge_building(e.target.value);
+    };
+    const submitButton = e => {
+        let params = {
+            address: address,
+            sqft: sqft,
+            age_building: age_building
+        };
+        dispatch(sellrequest(params));
+        e.preventDefault();
+        dispatch(push('/ThankYou'));
+    };
     return (
         <>
             <header className="header-sellhouse">
@@ -41,28 +69,28 @@ const Sellhouse = () => {
             <div className="clearfix"></div>
 
             <form className="form">
-                <label for="">
-                    <h4>Input your home information to get counselling.</h4>
-                    <br />
-                </label>
-                <label for="Address">
-                    <h6>Address</h6>
+                <h4>Input your home information to get counselling.</h4>
 
-                    <input type="text" placeholder="Enter your full house address" />
-                </label>
-                <label for="size">
-                    <h6>How much Square feet is your building?</h6>
+                <h6>Address</h6>
 
-                    <input type="text" placeholder="Enter your home size (sq. ft.)" />
-                </label>
+                <input type="text" name="address" placeholder="Enter your full house address" onChange={inputAddress} />
 
-                <label for="age">
-                    <h6>How old is your building?</h6>
+                <h6>How much Square feet is your building?</h6>
 
-                    <input type="text" placeholder="Enter the age of building(ex. 1986)" />
-                </label>
+                <input type="text" name="sqft" placeholder="Enter your home size (sq. ft.)" onChange={inputSqft} />
 
-                <input type="submit" className="btn" />
+                <h6>How old is your building?</h6>
+
+                <input
+                    type="text"
+                    name="age_building"
+                    placeholder="Enter the age of building(ex. 1986)"
+                    onChange={inputAge_Building}
+                />
+                <div>
+                    <input type="submit" className="btn" onClick={submitButton} id="" name="" />
+                    <input type="submit" className="btn" value="Cancel" onClick={() => dispatch(push('/'))} />
+                </div>
             </form>
 
             <Footer />

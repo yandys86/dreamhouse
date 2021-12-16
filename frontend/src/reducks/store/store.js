@@ -3,6 +3,7 @@ import { connectRouter, routerMiddleware } from 'connected-react-router';
 import thunk from 'redux-thunk';
 
 import { PostsReducer } from '../posts/reducers';
+import { TagsReducer } from '../tags/reducers';
 import { UserReducer } from '../users/reducers';
 
 export default function createStore(history) {
@@ -10,6 +11,7 @@ export default function createStore(history) {
         combineReducers({
             router: connectRouter(history),
             posts: PostsReducer,
+            tags: TagsReducer,
             user: UserReducer
         }),
         compose(

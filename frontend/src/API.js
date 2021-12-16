@@ -97,4 +97,37 @@ export default class API {
             });
         return savePost;
     };
+
+    sellrequest = async data => {
+        const savedPost = await api
+            .post(
+                '/sellrequest/add/',
+                {
+                    address: data.address,
+                    sqft: data.sqft,
+                    age_building: +data.age_building
+                },
+                { requireToken: true }
+            )
+            .then(response => {
+                return response.data;
+            })
+            .catch(error => {
+                throw new Error(error);
+            });
+        return savedPost;
+    };
+
+    //  TAGS API
+    getTags = async () => {
+        const tags = await api
+            .get('/tags/')
+            .then(response => {
+                return response.data;
+            })
+            .catch(error => {
+                throw new Error(error);
+            });
+        return tags;
+    };
 }

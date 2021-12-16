@@ -8,6 +8,7 @@ import Savehouse from './containers/Savehouse';
 import ViewHome from './containers/ViewHome';
 import SignUp from './containers/SignUp';
 import SignIn from './containers/SignIn';
+import Thankyou from './containers/Thankyou';
 
 const Router = () => {
     return (
@@ -21,6 +22,7 @@ const Router = () => {
                 <Route exact path={'/ViewHome'} component={ViewHome} />
                 <Route exact path={'/Signup'} component={SignUp} />
                 <Route exact path={'/Signin'} component={SignIn} />
+                <Route exact path={'/Thankyou'} component={Thankyou} />
             </Switch>
         </>
     );

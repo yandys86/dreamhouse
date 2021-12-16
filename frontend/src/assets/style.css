@@ -638,10 +638,26 @@ h6 {
 /*******************Form Sell******************************************/
 
 .form {
-    background-color: antiquewhite;
     display: flex;
     flex-direction: column;
     /* flex-wrap: nowrap; */
     align-items: center;
     gap: 5px;
+}
+
+.form input {
+    width: 350px;
+    height: 35px;
+}
+.form h4 {
+    font-size: 23px;
+}
+.form h6 {
+    width: 350px;
+    margin: 0 auto;
+    font-size: 18px;
+}
+.form .btn {
+    width: 100px;
+    margin: 7px;
 }

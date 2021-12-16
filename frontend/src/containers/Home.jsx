@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTags } from '../reducks/tags/selectors';
+import { fetchTags } from '../reducks/tags/operations';
 import '../assets/style.css';
 import Header from '../components/Common/Header';
 import MainImage from '../components/Common/MainImage';
@@ -7,6 +10,14 @@ import CategoryCard from '../components/Common/CategoryCard';
 import Footer from '../components/Common/Footer';
 
 const Home = () => {
+    const dispatch = useDispatch();
+    const selector = useSelector(state => state);
+    const tags = getTags(selector);
+
+    useEffect(() => {
+        dispatch(fetchTags());
+    }, []);
+
     return (
         <>
             <Header />
@@ -19,11 +30,7 @@ const Home = () => {
                 </h4>
             </div>
 
-            <div className="container">
-                <HomeCard />
-                <HomeCard />
-                <HomeCard />
-            </div>
+            <div className="container">{tags && tags.length !== 0 && tags.map(tag => <HomeCard tag={tag} />)}</div>
 
             <div className="explore-view">
                 <p>Explore home on Dream house</p>
