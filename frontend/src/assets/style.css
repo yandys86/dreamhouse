@@ -402,8 +402,11 @@ ul li a:hover {
     height: 25px;
 }
 
-a img.icon-heart:hover {
+.card img.icon-heart:hover {
     background-color: darkred;
+}
+.card img.icon-heart:active {
+    background-color: rgb(0, 95, 139);
 }
 
 /*=================================cajas=======================================*/

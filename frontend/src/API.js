@@ -169,4 +169,33 @@ export default class API {
             });
         return homes;
     };
+
+    getFavourites = async () => {
+        const favourites = await api
+            .get('/favourites/', { requireToken: true })
+            .then(response => {
+                return response.data;
+            })
+            .catch(error => {
+                throw new Error(error);
+            });
+        return favourites;
+    };
+
+    addFavourites = async addFavouriteBody => {
+        //{homeId: homeId} = {homeId}
+        const savedPost = await api
+            .post('/favourites/add/', addFavouriteBody, { requireToken: true })
+            .then(response => {
+                return response.data;
+            })
+            .catch(error => {
+                throw new Error(error);
+            });
+        return savedPost;
+    };
+
+    deleteFavourites = id => {
+        return api.delete(`favourite/delete/${id}`, { requireToken: true });
+    };
 }

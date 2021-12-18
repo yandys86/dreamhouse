@@ -1,5 +1,5 @@
 import API from '../../API';
-import { fetchFavouriteAction, deleteFavouriteAction, errorFavouriteAction } from './action';
+import { fetchFavouriteAction, deleteFavouriteAction, errorFavouriteAction, addFavouriteAction } from './action';
 
 const api = new API();
 
@@ -16,7 +16,7 @@ export const addFavourites = addFavouriteBody => {
         return api
             .addFavourites(addFavouriteBody)
             .then(home => {
-                // dispatch(addFavouriteAction(home));
+                dispatch(addFavouriteAction(home));
             })
             .catch(errors => {
                 dispatch(errorFavouriteAction(errors));
