@@ -130,4 +130,43 @@ export default class API {
             });
         return tags;
     };
+
+    //  HOMES//////////////
+
+    getHomes = async (search, tagId) => {
+        let url = '/home/';
+        let query = new URLSearchParams();
+        if (tagId) {
+            query.append('tag', tagId);
+        }
+        if (search) {
+            query.append('search', search);
+        }
+
+        if (query.toString() !== '') {
+            url += '?' + query.toString();
+        }
+
+        const homes = await api
+            .get(url)
+            .then(response => {
+                return response.data;
+            })
+            .catch(error => {
+                throw new Error(error);
+            });
+        return homes;
+    };
+
+    getHome = async id => {
+        const homes = await api
+            .get('/home/' + id + '/')
+            .then(response => {
+                return response.data;
+            })
+            .catch(error => {
+                throw new Error(error);
+            });
+        return homes;
+    };
 }

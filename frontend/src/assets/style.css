@@ -365,7 +365,7 @@ ul li a:hover {
     font-weight: 400;
     margin-bottom: 2%;
 }
-.card .contenido a {
+.card .contenido button {
     text-decoration: none;
     display: inline-block;
     padding: 5px;
@@ -378,7 +378,7 @@ ul li a:hover {
     background-color: rgb(62, 63, 66);
 }
 
-.card .contenido a:hover {
+.card .contenido button:hover {
     background: #2fb4cc;
     color: #fff;
 }
@@ -543,6 +543,10 @@ h6 {
     height: 38px;
     color: white;
     width: 100%;
+}
+
+#vh {
+    width: 100px;
 }
 
 .textos button {

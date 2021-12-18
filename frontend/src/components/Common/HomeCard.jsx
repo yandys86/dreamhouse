@@ -10,7 +10,7 @@ export default function HomeCard({ tag }) {
     const pushTotag = tagId => {
         if (key) {
             if (tag.type === 'Sell') {
-                dispatch(push('/sale'));
+                dispatch(push('/Sellhouse'));
             } else {
                 dispatch(push(`/search?tag_id=${tagId}&tag_type=${tag.type}`));
             }
@@ -19,8 +19,6 @@ export default function HomeCard({ tag }) {
         }
     };
 
-    console.log('tag', tag);
-
     return (
         <>
             <div className="card" key={tag.id}>
@@ -28,7 +26,7 @@ export default function HomeCard({ tag }) {
                 <div className="contenido">
                     <h3>{tag.name}</h3>
                     <p>{tag.description}</p>
-                    <a href={() => pushTotag(tag.id)}>Search Home</a>
+                    <button onClick={() => pushTotag(tag.id)}>Search homes</button>
                 </div>
             </div>
         </>

@@ -4,6 +4,7 @@ import Home from './containers/Home';
 import Saleshouselist from './containers/Saleshouselist';
 import Renthouselist from './containers/Renthouselist';
 import Sellhouse from './containers/Sellhouse';
+import Search from './containers/Search';
 import Savehouse from './containers/Savehouse';
 import ViewHome from './containers/ViewHome';
 import SignUp from './containers/SignUp';
@@ -23,6 +24,7 @@ const Router = () => {
                 <Route exact path={'/Signup'} component={SignUp} />
                 <Route exact path={'/Signin'} component={SignIn} />
                 <Route exact path={'/Thankyou'} component={Thankyou} />
+                <Route exact path={'/Search'} component={Search} />
             </Switch>
         </>
     );

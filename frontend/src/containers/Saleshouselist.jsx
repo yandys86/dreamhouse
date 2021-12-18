@@ -1,6 +1,5 @@
 import React from 'react';
 import '../assets/style.css';
-import SavesCard from '../components/Common/SavesCard';
 import SelectOption from '../components/Common/SelectOption';
 import Footer from '../components/Common/Footer';
 import Logo from '../components/Common/Logo';
@@ -19,13 +18,7 @@ const Saleshouselist = () => {
                 <h4>Houses for Sale Near Me</h4>
             </div>
 
-            <div className="container">
-                <SavesCard />
-                <SavesCard />
-                <SavesCard />
-                <SavesCard />
-                <SavesCard />
-            </div>
+            <div className="container"></div>
 
             <div className="section-view">
                 <button>View More</button>

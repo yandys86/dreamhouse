@@ -2,7 +2,8 @@ import { createStore as reduxCreateStore, combineReducers, applyMiddleware, comp
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import thunk from 'redux-thunk';
 
-import { PostsReducer } from '../posts/reducers';
+import { HomesReducer } from '../homes/reducers';
+import { FavouritesReducer } from '../favourite/reducers';
 import { TagsReducer } from '../tags/reducers';
 import { UserReducer } from '../users/reducers';
 
@@ -10,7 +11,8 @@ export default function createStore(history) {
     return reduxCreateStore(
         combineReducers({
             router: connectRouter(history),
-            posts: PostsReducer,
+            homes: HomesReducer,
+            favourites: FavouritesReducer,
             tags: TagsReducer,
             user: UserReducer
         }),
