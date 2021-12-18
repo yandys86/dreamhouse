@@ -10,7 +10,7 @@ import Header from '../components/Common/Header';
 import MainImage from '../components/Common/MainImage';
 import HomeCard from '../components/Common/HomeCard';
 import Footer from '../components/Common/Footer';
-import Card from '../components/Common/Card';
+import { push } from 'connected-react-router';
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -28,11 +28,13 @@ const Home = () => {
         dispatch(fetchTags());
     }, []);
 
-    const clickHome = homeId => {
+    /* const clickHome = homeId => {
         dispatch(history.push(`/preview/${homeId}/`));
-    };
+    };*/
 
-    console.log('image', homes);
+    const clickHome = homeId => {
+        dispatch(push('/preview/' + homeId + '/'));
+    };
 
     return (
         <>

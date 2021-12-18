@@ -8,6 +8,7 @@ import Savehouse from './containers/Savehouse';
 import ViewHome from './containers/ViewHome';
 import SignUp from './containers/SignUp';
 import SignIn from './containers/SignIn';
+import Preview from './components/Common/Preview';
 import Thankyou from './containers/Thankyou';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from './reducks/users/selectors';
@@ -38,6 +39,7 @@ const Router = () => {
                 <Route exact path={'/Signin'} component={SignIn} />
                 <Route exact path={'/Thankyou'} component={Thankyou} />
                 <Route exact path={'/Search'} component={token ? Search : SignIn} />
+                <Route exact path={'/preview/:id/'} component={token ? Preview : SignIn} />
             </Switch>
         </>
     );

@@ -34,8 +34,6 @@ const Search = () => {
         }
     }, [search, tagId]);
 
-    console.log('home', homes);
-
     return (
         <div>
             <div className="header-small">
