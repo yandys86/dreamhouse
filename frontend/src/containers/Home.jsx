@@ -32,6 +32,8 @@ const Home = () => {
         dispatch(history.push(`/preview/${homeId}/`));
     };
 
+    console.log('image', homes);
+
     return (
         <>
             <Header />
@@ -56,9 +58,9 @@ const Home = () => {
                 {homes && homes.length !== 0
                     ? homes.results.map(home => (
                           <div key={home.id} className="cajas">
-                              <img src={'https://res.cloudinary.com/dwzjr9dg5/' + home.main_image} alt="" />
+                              <img src={'https://res.cloudinary.com/yiyo-lmb/' + home.main_image} alt="" />
                               <div className="textos">
-                                  <h3>{home.address}</h3>
+                                  <h3>{home.state}</h3>
 
                                   <button id="vh" onClick={() => clickHome(home.id)}>
                                       View Home
