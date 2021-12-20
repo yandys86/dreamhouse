@@ -4,8 +4,7 @@ import Home from './containers/Home';
 
 import Sellhouse from './containers/Sellhouse';
 import Search from './containers/Search';
-import Savehouse from './containers/Savehouse';
-import ViewHome from './containers/ViewHome';
+import Saved from './containers/Saved';
 import SignUp from './containers/SignUp';
 import SignIn from './containers/SignIn';
 import Preview from './components/Common/Preview';
@@ -32,9 +31,7 @@ const Router = () => {
                 <Route exact path={'/'} component={Home} />
 
                 <Route exact path={'/Sellhouse'} component={token ? Sellhouse : SignIn} />
-
-                <Route exact path={'/Savehouse'} component={Savehouse} />
-                <Route exact path={'/ViewHome'} component={ViewHome} />
+                <Route exact path={'/saved'} component={token ? Saved : SignIn} />
                 <Route exact path={'/Signup'} component={SignUp} />
                 <Route exact path={'/Signin'} component={SignIn} />
                 <Route exact path={'/Thankyou'} component={Thankyou} />

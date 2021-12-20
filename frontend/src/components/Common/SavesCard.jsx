@@ -10,6 +10,7 @@ function SavesCard({ home, favourite }) {
     const selector = useSelector(state => state);
 
     const clickSaved = home => {
+        console.log('home', home.id);
         dispatch(addFavourites({ home: home.id }));
         dispatch(fetchFavourites());
     };
@@ -23,23 +24,32 @@ function SavesCard({ home, favourite }) {
     return (
         <>
             <div className="card" key={home.id}>
-                {home && Object.values(saved).filter(savedHomes => home.id === savedHomes.id).length === 0 && (
-                    <img
-                        class="icon-heart"
-                        onClick={() => {
-                            clickSaved(home);
-                        }}
-                        src={iconheart}
-                        alt=""
-                    />
-                )}
+                {home &&
+                    favourite &&
+                    Object.values(favourite).filter(favouriteHomes => home.id === favouriteHomes.id).length === 0 && (
+                        <img
+                            className="icon-heart"
+                            onClick={() => {
+                                clickSaved(home);
+                            }}
+                            src={iconheart}
+                            alt=""
+                        />
+                    )}
 
                 <img
                     onClick={() => clickHome(home.id)}
                     src={'https://res.cloudinary.com/yiyo-lmb/' + home.main_image}
                     alt=""
                 />
-
+                <img
+                    className="icon-heart"
+                    onClick={() => {
+                        clickSaved(home);
+                    }}
+                    src={iconheart}
+                    alt=""
+                />
                 <div className="contenido-sales-rent">
                     <h2>${home.price}</h2>
                     <div className="dimensions">

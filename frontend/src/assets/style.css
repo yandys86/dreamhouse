@@ -205,7 +205,8 @@ ul li a:hover {
 
 .user {
     display: flex;
-    height: 23px;
+    height: 80px;
+    background-color: royalblue;
 }
 .user select {
     border: none;
@@ -714,3 +715,5 @@ h6 {
     width: 80%;
     margin: 0 auto;
 }
+
+/**************************************************/

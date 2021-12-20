@@ -95,9 +95,6 @@ function Preview() {
                         </div>
                     </div>
                 )}
-                <div className="section-view">
-                    <button>View More</button>
-                </div>
                 <Footer />
             </div>
         </>
