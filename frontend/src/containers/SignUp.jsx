@@ -36,6 +36,7 @@ function SignUp() {
         setUserName('');
         setEmail('');
         setPassword('');
+        dispatch(push('/'));
     };
 
     return (

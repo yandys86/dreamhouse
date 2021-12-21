@@ -9,6 +9,8 @@ import SelectOption from '../components/Common/SelectOption';
 import Footer from '../components/Common/Footer';
 import Logo from '../components/Common/Logo';
 import SearchInput from '../components/Common/SearchInput';
+import { getFavourites } from '../reducks/favourite/selectors';
+import { fetchFavourites } from '../reducks/favourite/operations';
 
 const Search = () => {
     const parsed = queryString.parse(window.location.search);
@@ -17,6 +19,7 @@ const Search = () => {
     const dispatch = useDispatch();
     const selector = useSelector(state => state);
     const homes = getHomes(selector);
+    const favourite = getFavourites(selector);
 
     useEffect(() => {
         if (parsed.search !== undefined) {
@@ -31,6 +34,7 @@ const Search = () => {
         if (search != null || tagId != null) {
             dispatch(clearHomes());
             dispatch(fetchHomes(search, tagId));
+            dispatch(fetchFavourites());
         }
     }, [search, tagId]);
 
@@ -46,7 +50,9 @@ const Search = () => {
             <div className="section-title">{<h4>House for {parsed.tag_type ? parsed.tag_type : ''} Near me</h4>}</div>
 
             <div className="container">
-                {homes && homes.length !== 0 ? homes.results.map(home => <SavesCard home={home} />) : 'Not an array'}
+                {homes && homes.length !== 0
+                    ? homes.results.map(home => <SavesCard home={home} favourite={favourite} />)
+                    : 'Not an array'}
             </div>
 
             <div className="section-view">

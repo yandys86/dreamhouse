@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signOut } from '../../reducks/users/operations';
 import { push } from 'connected-react-router';
 import { getTags } from '../../reducks/tags/selectors';
+import { fetchTags } from '../../reducks/tags/operations';
 
 function SelectOption({ setShowOption }) {
     const dispatch = useDispatch();
@@ -13,51 +14,54 @@ function SelectOption({ setShowOption }) {
     const selector = useSelector(state => state);
     const tags = getTags(selector);
 
-    const signOutButton = () => {
-        dispatch(signOut());
-        setCheckUser(false);
-    };
-
     useEffect(() => {
         if (key != null) {
             setCheckUser(true);
         }
     }, [key]);
 
+    useEffect(() => {
+        dispatch(fetchTags());
+    }, []);
+
+    const handleChange = event => {
+        if (event.target.value === 'favourite') {
+            dispatch(push('/saved'));
+        }
+        if (event.target.value === 'Sell') {
+            dispatch(push('/Sellhouse'));
+        }
+        if (event.target.value === 'LogOut') {
+            dispatch(signOut());
+            setCheckUser(false);
+        } else if (event.target.value === 'Rent' || event.target.value === 'Buy') {
+            dispatch(push(`Search?tag_id=${event.target.id}&tag_type=${event.target.value}`));
+        }
+    };
+
     return (
         <>
-            <div className="user" onClick={() => setShowOption(false)}>
-                <div class="options">
-                    <ul>
-                        <li>
-                            <img src={usericon} alt="" />
-                            {checkUser && <p>{user.user_name}</p>}
-                        </li>
-                        <li onClick={() => dispatch(push('/saved'))} class="first">
-                            Favorites
-                        </li>
-                        {tags && tags.length
-                            ? tags.map(t => {
-                                  if (t.type === 'Sell') {
-                                      return <li onClick={() => dispatch(push('/sale'))}>Sell a house </li>;
-                                  } else {
-                                      return (
-                                          <li
-                                              onClick={() => dispatch(push(`Search?tag_id=${t.id}&tag_type=${t.type}`))}
-                                          >
-                                              {t.type} a house
-                                          </li>
-                                      );
-                                  }
-                              })
-                            : ''}
+            <div class="user">
+                <img src={usericon} alt="" />
+                <select name="user" onChange={handleChange}>
+                    <option key={user.id} value={user.user_name}>
+                        {checkUser && user.user_name}
+                    </option>
 
-                        <li onClick={signOutButton}>
-                            {' '}
-                            <a href="/">Log Out</a>
-                        </li>
-                    </ul>
-                </div>
+                    <option value="favourite">Favourite</option>
+
+                    {tags && tags.length !== 0
+                        ? tags.results.map(t => {
+                              return (
+                                  <option key={t.id} value={t.type} id={t.id}>
+                                      {t.type} a house
+                                  </option>
+                              );
+                          })
+                        : 'notthin'}
+
+                    <option value="LogOut">Log Out</option>
+                </select>
             </div>
         </>
     );

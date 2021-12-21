@@ -24,8 +24,8 @@ function SavesCard({ home, favourite }) {
     return (
         <>
             <div className="card" key={home.id}>
-                {home &&
-                    favourite &&
+                {home.results &&
+                    favourite.results &&
                     Object.values(favourite).filter(favouriteHomes => home.id === favouriteHomes.id).length === 0 && (
                         <img
                             className="icon-heart"
@@ -36,12 +36,6 @@ function SavesCard({ home, favourite }) {
                             alt=""
                         />
                     )}
-
-                <img
-                    onClick={() => clickHome(home.id)}
-                    src={'https://res.cloudinary.com/yiyo-lmb/' + home.main_image}
-                    alt=""
-                />
                 <img
                     className="icon-heart"
                     onClick={() => {
@@ -50,6 +44,13 @@ function SavesCard({ home, favourite }) {
                     src={iconheart}
                     alt=""
                 />
+
+                <img
+                    onClick={() => clickHome(home.id)}
+                    src={'https://res.cloudinary.com/yiyo-lmb/' + home.main_image}
+                    alt=""
+                />
+
                 <div className="contenido-sales-rent">
                     <h2>${home.price}</h2>
                     <div className="dimensions">

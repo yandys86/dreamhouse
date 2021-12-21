@@ -61,11 +61,8 @@ body {
     position: relative;
 }
 nav {
-    width: 163px;
+    width: 140px;
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    gap: 5px;
 }
 
 ul li .img {
@@ -77,11 +74,14 @@ ul li .img {
 }
 
 .select {
-    width: 110px;
+    width: 66px;
     color: black;
     display: flex;
-    align-items: flex-end;
-    height: 23px;
+    justify-content: space-evenly;
+}
+.user select {
+    border: none;
+    background: #fff0;
 }
 
 .arrowdown {
@@ -95,10 +95,9 @@ ul li .img {
     border-radius: 5px;
 }
 
-.select .arrowdown:hover {
+.select i:hover {
     cursor: pointer;
     color: brown;
-    width: 30px;
 }
 
 .img img {
@@ -188,6 +187,8 @@ ul li a:hover {
     position: absolute;
     right: 0px;
     visibility: hidden;
+    top: 33px;
+    color: black;
 }
 .card-user ul li::marker {
     text-decoration: none;
@@ -205,40 +206,17 @@ ul li a:hover {
 
 .user {
     display: flex;
-    height: 80px;
-    background-color: royalblue;
-}
-.user select {
-    border: none;
-    background: transparent;
+    height: 23px;
 }
 .user img {
     width: 30px;
 }
-.user2 {
-    display: none;
-}
-.user2 select {
-    border: none;
-    background: #fff;
-    width: 20px;
-}
-.user2 img {
-    width: 30px;
-}
-
 @media screen and (max-width: 650px) {
     .user {
         display: none;
     }
     .input-header-sales-rent {
         display: none;
-    }
-    .user2 {
-        display: flex;
-        height: 23px;
-        width: 50%;
-        justify-content: flex-end;
     }
 }
 
