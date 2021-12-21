@@ -25,17 +25,25 @@ function SelectOption({ setShowOption }) {
     }, []);
 
     const handleChange = event => {
-        if (event.target.value === 'favourite') {
-            dispatch(push('/saved'));
-        }
-        if (event.target.value === 'Sell') {
-            dispatch(push('/Sellhouse'));
-        }
-        if (event.target.value === 'LogOut') {
-            dispatch(signOut());
-            setCheckUser(false);
-        } else if (event.target.value === 'Rent' || event.target.value === 'Buy') {
-            dispatch(push(`Search?tag_id=${event.target.id}&tag_type=${event.target.value}`));
+        switch (event.target.value) {
+            case 'favourite':
+                dispatch(push('/saved'));
+                break;
+            case 'Sell':
+                dispatch(push('/Sellhouse'));
+                break;
+            case 'Rent':
+                dispatch(push('/Search?tag_id=4&tag_type=Rent'));
+
+                break;
+            case 'Buy':
+                dispatch(push(`/Search?tag_id=2&tag_type=Buy`));
+                break;
+
+            default:
+                dispatch(signOut());
+                setCheckUser(false);
+                break;
         }
     };
 
@@ -43,7 +51,7 @@ function SelectOption({ setShowOption }) {
         <>
             <div class="user">
                 <img src={usericon} alt="" />
-                <select name="user" onChange={handleChange}>
+                <select name="user" onChange={handleChange} id="user">
                     <option key={user.id} value={user.user_name}>
                         {checkUser && user.user_name}
                     </option>
@@ -53,7 +61,7 @@ function SelectOption({ setShowOption }) {
                     {tags && tags.length !== 0
                         ? tags.results.map(t => {
                               return (
-                                  <option key={t.id} value={t.type} id={t.id}>
+                                  <option value={t.type} id={t.id}>
                                       {t.type} a house
                                   </option>
                               );
