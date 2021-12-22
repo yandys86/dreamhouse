@@ -4,8 +4,10 @@ function MainImage() {
     return (
         <>
             <div className="Main-img">
-                <SearchInput />
                 <div className="text-content">
+                    <div className="search-main">
+                        <SearchInput />
+                    </div>
                     <h1>
                         Discover a place <br />
                         you'll love to live.

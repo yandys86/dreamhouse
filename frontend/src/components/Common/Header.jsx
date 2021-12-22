@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Logo from './Logo';
 import SelectOption from './SelectOption';
+import ImgUseIcon from '../../assets/img/user-icon.png';
+import SearchInput from './SearchInput';
 
 const key = localStorage.getItem('HOME_LOGIN_USER_KEY');
 
@@ -23,6 +25,7 @@ export default function Header() {
         <>
             <div className="navbar-sign">
                 <Logo />
+
                 {checkUser && checkUser != true ? (
                     <div class="drop-down" onClick={() => setShowOption(true)}>
                         <img src={ImgUseIcon} alt="" />

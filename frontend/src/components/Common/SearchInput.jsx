@@ -4,7 +4,7 @@ import ImgSearchIcon from '../../assets/img/search_white_48dp.png';
 import { push } from 'connected-react-router';
 
 function SearchInput() {
-    const [showSearchBar, setSearchBar] = useState(false);
+    const [showSearchBar, setSearchBar] = useState(true);
     const dispatch = useDispatch();
     const [search, setSearch] = useState();
     let pageURL = window.location.toString();
@@ -14,6 +14,7 @@ function SearchInput() {
     };
 
     const submitAction = search => {
+        console.log('text:', search);
         dispatch(push('/search/?search=' + search));
     };
 
@@ -24,11 +25,10 @@ function SearchInput() {
     }, []);
 
     return (
-        <div>
-            <div className="navbar">
-                {showSearchBar && (
-                    <div className="input-header">
-                        <img onClick={() => submitAction(search)} src="/" alt="" />
+        <>
+            {showSearchBar && (
+                <div className="search">
+                    <div>
                         <input
                             type="text"
                             onChange={inputFind}
@@ -37,9 +37,10 @@ function SearchInput() {
                             autocomplete="false"
                         />
                     </div>
-                )}
-            </div>
-        </div>
+                    <img className="icon-search" onClick={() => submitAction(search)} src={ImgSearchIcon} alt="" />
+                </div>
+            )}
+        </>
     );
 }
 

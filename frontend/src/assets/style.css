@@ -151,6 +151,44 @@ ul li a:hover {
     margin-right: 3px;
     color: rgb(41, 37, 37);
 }
+.search {
+    display: flex;
+    flex-direction: row;
+    width: 232px;
+    height: 25px;
+    border: 1px solid black;
+    border-radius: 7px;
+    opacity: 70%;
+    color: black;
+    background: none;
+    justify-content: flex-end;
+}
+.search img {
+    width: 22px;
+}
+.search .icon-search {
+    width: 25px;
+}
+.search .icon-search:hover {
+    cursor: pointer;
+}
+
+.search input {
+    position: relative;
+    border-radius: 7px;
+    font-size: 20px;
+    opacity: 70%;
+    color: #080807;
+    background: none;
+    border: none;
+    width: 206px;
+    height: 25px;
+}
+.search-main {
+    position: absolute;
+    left: 80%;
+    color: rgba(0, 0, 0, 0.4);
+}
 
 .input-header {
     width: 95%;
