@@ -7,7 +7,8 @@ if (process.env.REACT_APP_ENVIRONMENT && process.env.REACT_APP_ENVIRONMENT === '
 } else {
     baseURL = 'http://127.0.0.1:8000';
 }
-//baseURL = 'https://backend-yandys.herokuapp.com/'
+
+// baseURL = 'https://backend-dreamhome.herokuapp.com/';
 
 const api = axios.create({
     baseURL: baseURL,
@@ -33,72 +34,11 @@ api.interceptors.request.use(
 );
 
 export default class API {
-    getPosts = params => {
-        return api
-            .get('/posts/', { params })
-            .then(response => {
-                return response.data;
-            })
-            .catch(error => {
-                throw new Error(error);
-            });
-    };
-    addPost = postBody => {
-        const formData = new FormData();
-
-        for (const key in postBody) {
-            formData.append(key, postBody[key]);
-        }
-
-        return api
-            .post('/posts/add/', formData)
-            .then(response => {
-                return response.data;
-            })
-            .catch(error => {
-                throw new Error(error);
-            });
-    };
-    deletePost = id => {
-        return api.delete(`/posts/delete/${id}/`).catch(error => {
-            throw new Error(error);
-        });
-    };
-
-    //******************************************************* */
-
-    signUp = async (user_name, email, password) => {
-        const savePost = await api
-            .post('/users/signup/', {
-                user_name: user_name,
-                email: email,
-                password: password
-            })
-            .then(response => {
-                return response.data;
-            })
-            .catch(error => {
-                throw new Error(error);
-            });
-        return savePost;
-    };
-
-    signIn = async (email, password) => {
-        const savePost = await api
-            .post('/users/signin/', {
-                email: email,
-                password: password
-            })
-            .then(response => {
-                return response.data;
-            })
-            .catch(error => {
-                throw new Error(error);
-            });
-        return savePost;
-    };
+    // POST API
 
     sellrequest = async data => {
+        console.log('connected to API');
+
         const savedPost = await api
             .post(
                 '/sellrequest/add/',
@@ -118,23 +58,41 @@ export default class API {
         return savedPost;
     };
 
-    //  TAGS API
-    getTags = async () => {
-        const tags = await api
-            .get('/tags/')
+    signUp = async (user_name, email, password) => {
+        const savedPost = await api
+            .post('/users/signup/', {
+                user_name: user_name,
+                email: email,
+                password: password
+            })
             .then(response => {
                 return response.data;
             })
             .catch(error => {
                 throw new Error(error);
             });
-        return tags;
+        return savedPost;
+    };
+
+    signIn = async (email, password) => {
+        const savedPost = await api
+            .post('/users/signin/', {
+                email: email,
+                password: password
+            })
+            .then(response => {
+                return response.data;
+            })
+            .catch(error => {
+                throw new Error(error);
+            });
+        return savedPost;
     };
 
     //  HOMES//////////////
 
     getHomes = async (search, tagId) => {
-        let url = '/home/';
+        let url = '/house/';
         let query = new URLSearchParams();
         if (tagId) {
             query.append('tag', tagId);
@@ -160,7 +118,7 @@ export default class API {
 
     getHome = async id => {
         const homes = await api
-            .get('/home/' + id + '/')
+            .get('/house/' + id + '/')
             .then(response => {
                 return response.data;
             })
@@ -168,6 +126,19 @@ export default class API {
                 throw new Error(error);
             });
         return homes;
+    };
+
+    //  TAGS API
+    getTags = async () => {
+        const tags = await api
+            .get('/tags/')
+            .then(response => {
+                return response.data;
+            })
+            .catch(error => {
+                throw new Error(error);
+            });
+        return tags;
     };
 
     getFavourites = async () => {
@@ -196,6 +167,6 @@ export default class API {
     };
 
     deleteFavourites = id => {
-        return api.delete(`favourite/delete/${id}`, { requireToken: true });
+        return api.delete(`favourites/delete/${id}`, { requireToken: true });
     };
 }

@@ -3,7 +3,7 @@ import { connectRouter, routerMiddleware } from 'connected-react-router';
 import thunk from 'redux-thunk';
 
 import { HomesReducer } from '../homes/reducers';
-import { FavouritesReducer } from '../favourite/reducers';
+import { FavouritesReducer } from '../favoutite/reducers';
 import { TagsReducer } from '../tags/reducers';
 import { UserReducer } from '../users/reducers';
 

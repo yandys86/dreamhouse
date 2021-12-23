@@ -8,9 +8,8 @@ class FavouriteSerializer(serializers.ModelSerializer):
         model = Favourite
         fields = '__all__'
 
-
 class ListFavouriteSerializer(serializers.ModelSerializer):
-    user = UserSerializer(many=False, read_only=True)
+    user = UserSerializer(many = False, read_only = True)
 
     class Meta:
         model = Favourite

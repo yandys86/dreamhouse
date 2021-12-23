@@ -1,4 +1,3 @@
-
 from django.shortcuts import render
 from rest_framework import generics, status
 from rest_framework.response import Response
@@ -9,13 +8,13 @@ from .models import Favourite, Home
 
 # Create your views here.
 
-class FavouriteList(CustomLoginRequiredMixin, generics.ListAPIView):
+class FavouriteList( CustomLoginRequiredMixin,generics.ListAPIView):
     serializer_class = ListFavouriteSerializer
-
+    
     def get(self, request, *args, **kwargs):
-        self.queryset = Favourite.objects.order_by(
-            '-created_at').filter(user_id=request.login_user.id)
+        self.queryset = Favourite.objects.order_by('-created_at').filter(user_id = request.login_user.id)
         return self.list(request, *args, **kwargs)
+
 
 
 class FavouriteAdd(CustomLoginRequiredMixin, generics.CreateAPIView):
@@ -29,9 +28,8 @@ class FavouriteAdd(CustomLoginRequiredMixin, generics.CreateAPIView):
         print("home", home_id)
         home = Home.objects.get(id=home_id)
 
-        existed = Favourite.objects.filter(
-            home=home_id, user=request.login_user.id).first()
-        print("existed", existed)
+        existed = Favourite.objects.filter(home=home_id, user=request.login_user.id).first()
+        print("existed",existed)
 
         if existed is not None:
             return Response('Home is already Saved', status.HTTP_400_BAD_REQUEST)
@@ -46,7 +44,8 @@ class FavouriteAdd(CustomLoginRequiredMixin, generics.CreateAPIView):
         return self.create(request, *args, **kwargs)
 
 
-class FavouriteDelete(CustomLoginRequiredMixin, generics.DestroyAPIView):
+
+class FavouriteDelete(CustomLoginRequiredMixin,generics.DestroyAPIView):
     queryset = Favourite.objects.all()
     serializer_class = FavouriteSerializer
     lookup_field = 'id'
@@ -55,12 +54,11 @@ class FavouriteDelete(CustomLoginRequiredMixin, generics.DestroyAPIView):
         # Get URL Param
         id = self.kwargs['id']
 
-        favourite = Favourite.objects.filter(
-            user_id=request.login_user.id, id=id).first()
+        favourite = Favourite.objects.filter(user_id=request.login_user.id, id=id).first()
 
         if favourite is None:
             return Response('Favourite not found.', status.HTTP_400_BAD_REQUEST)
 
         self.destroy(request, *args, **kwargs)
-
+        
         return Response({'message': "Success."})

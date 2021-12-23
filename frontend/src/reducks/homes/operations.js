@@ -14,6 +14,12 @@ export const fetchHomes = (find, tagId) => {
         return api
             .getHomes(find, tagId)
             .then(homes => {
+                // const prevHomes = getState().homes.list;
+                // const nextHomes = [...prevHomes, ...homes['results']];
+                // let hasNext = false;
+                // if (homes['next']) {
+                //     hasNext = true;
+                // }
                 dispatch(fetchHomesAction(homes));
             })
             .catch(error => {

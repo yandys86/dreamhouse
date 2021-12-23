@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import '../assets/style.css';
 import { useDispatch } from 'react-redux';
 import { signUp } from '../reducks/users/operations';
-import { push } from 'connected-react-router';
-import Header from '../components/Common/Header';
-import Logo from '../assets/img/logo.png';
-import MainImage from '../components/Common/MainImage';
+import ImgLogoIcon from '../assets/img/icon-logo.svg';
 import ImgCloseIcon from '../assets/img/icon-close.svg';
+import MainImage from '../components/Common/MainImage';
+import { push } from 'connected-react-router';
 
 function SignUp() {
     const dispatch = useDispatch();
@@ -36,40 +34,34 @@ function SignUp() {
         setUserName('');
         setEmail('');
         setPassword('');
-        dispatch(push('/'));
     };
 
     return (
-        <>
-            <Header />
+        <div>
             <MainImage />
+            <div class="main2">
+                <div class="signin">
+                    <img onClick={closeButton} class="close" src={ImgCloseIcon} alt="" />
+                    <img class="logo" src={ImgLogoIcon} alt="" />
 
-            <div class="login">
-                <img onClick={closeButton} class="close" src={ImgCloseIcon} alt="" />
-                <div class="logo">
-                    <img src={Logo} alt="" />
-                </div>
-                <div>
-                    <h3>Sign Up</h3>
-                </div>
-                <form action="" className="form-loguin">
-                    <h4>Username</h4>
-                    <input type="text" onChange={inputUserName} placeholder="Enter User Name" />
-                    <h4>Email</h4>
-                    <input type="email" onChange={inputEmail} placeholder="Enter email" />
-                    <h4>Password</h4>
-                    <input type="password" onChange={inputPassword} placeholder="Enter Password" />
-
-                    <button onClick={signUpButton} class="button-input">
-                        Sign up
+                    <p class="head">Sign up</p>
+                    <p>Username</p>
+                    <input type="text" onChange={inputUserName} name="" placeholder="Enter email" id="" />
+                    <p>Email</p>
+                    <input type="text" onChange={inputEmail} name="" placeholder="Enter email" id="" />
+                    <p>Password</p>
+                    <input type="text" onChange={inputPassword} name="" placeholder="Enter Password" id="" />
+                    <button onClick={signUpButton} class="signup-button">
+                        {' '}
+                        <a href="/">Sign up</a>
                     </button>
                     <div class="foot"></div>
                     <button class="text" onClick={() => dispatch(push('/signin'))}>
                         Already an Customer SignIn
                     </button>
-                </form>
+                </div>
             </div>
-        </>
+        </div>
     );
 }
 

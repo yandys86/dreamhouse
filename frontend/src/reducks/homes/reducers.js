@@ -6,10 +6,12 @@ export const HomesReducer = (state = initialState.homes, action) => {
         case Actions.FETCH_HOMES:
             return {
                 list: action.list
+                // hasNext: action.hasNext
             };
         case Actions.CLEAR_HOMES:
             return {
                 list: action.list
+                // hasNext: action.hasNext
             };
         default:
             return state;

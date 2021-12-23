@@ -15,6 +15,7 @@ export const fetchUserFromLocalStorage = () => {
 
 export const signUp = (user_name, email, password) => {
     return async dispatch => {
+        // Validation
         if (user_name === '' || email === '' || password === '') {
             alert('Please fill out name, email, and password.');
             return false;
@@ -33,8 +34,8 @@ export const signUp = (user_name, email, password) => {
             });
     };
 };
-
-export const signIn = (email, password) => {
+// values = {email:'', password: ''}
+export const signIn = ({ email, password }) => {
     return async dispatch => {
         // Validation
         if (email === '' || password === '') {

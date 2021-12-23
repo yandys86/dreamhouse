@@ -8,7 +8,7 @@ class User(models.Model):
         db_table = 'user'
 
     user_name = models.CharField(
-        'User Name', blank=False, null=False, max_length=50, db_index=True, default="UserName"
+        'User Name', blank=False, null=False, max_length=50, db_index=True
     )
     password = models.CharField(
         'Password', blank=False, null=False, max_length=500, db_index=True

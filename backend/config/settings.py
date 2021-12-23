@@ -31,7 +31,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 CORS_ALLOW_ALL_ORIGINS = True
-#CORS_ALLOWED_ORIGINS = ['http://localhost:3000', 'http://127.0.0.1:3000', 'https://forum-prod-frontend.herokuapp.com']
+# CORS_ALLOWED_ORIGINS = ['http://localhost:3000', 'http://127.0.0.1:3000', 'https://forum-prod-frontend.herokuapp.com']
 
 # Application definition
 
@@ -46,18 +46,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.posts',
-    'cloudinary',
-    'django_filters',
     'apps.tags',
+    'apps.home',
     'apps.users',
     'apps.sellrequests',
-    'apps.home',
     'apps.favourites',
-
-
-
-
-
+    'cloudinary',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -100,11 +95,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'dbqr5qgqc7vnre',
-#         'USER': 'llhoamhirmufmz',
+#         'NAME': 'd7rdkrmcu20rv2',
+#         'USER': 'kjyspbumtruovm',
 #         'PORT': 5432,
-#         'HOST': 'ec2-34-233-214-228.compute-1.amazonaws.com',
-#         'PASSWORD': 'da4884030ae07bbafbccea3da2a9d8dca1d12cc3043a010aeda2820d192c662b',
+#         'HOST': 'ec2-54-87-92-21.compute-1.amazonaws.com',
+#         'PASSWORD': '32831bc2a0ab2efe44a7c49b1ac6dc56c772a9b8f80584bb988570333f79776a',
 #     }
 # }
 
@@ -165,14 +160,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 cloudinary.config(
-    cloud_name="yiyo-lmb",
-    api_key="118474262822283",
-    api_secret="dBgIm8st5iZdTXL7Af7xuCU-Suo",
+    cloud_name="dwzjr9dg5",
+    api_key="536672223265251",
+    api_secret="9QEbLaYGuMpHp8NiMDc8OKY5ubs",
     secure=True
 )
 
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    # 'PAGE_SIZE': 6
 }

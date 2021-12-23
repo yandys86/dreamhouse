@@ -4,7 +4,6 @@ from apps.users.models import User
 from django.db.models.deletion import CASCADE
 # Create your models here.
 
-
 class Favourite(models.Model):
     class Meta(object):
         db_table = 'favourite'

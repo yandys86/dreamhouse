@@ -1,6 +1,7 @@
 const initialState = {
     homes: {
-        list: []
+        list: [],
+        hasNext: true
     },
     favourites: {
         list: []

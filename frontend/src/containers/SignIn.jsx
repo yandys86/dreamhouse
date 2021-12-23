@@ -1,69 +1,78 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { signIn } from '../reducks/users/operations';
-import '../assets/style.css';
-import Header from '../components/Common/Header';
-import Logo from '../assets/img/logo.png';
-import MainImage from '../components/Common/MainImage';
+import ImgLogoIcon from '../assets/img/icon-logo.svg';
 import ImgCloseIcon from '../assets/img/icon-close.svg';
-import { push } from 'connected-react-router';
+import MainImage from '../components/Common/MainImage';
+import { useHistory } from 'react-router';
+import { getUser } from '../reducks/users/selectors';
 
-function SignIn() {
+function Signin() {
     const dispatch = useDispatch();
+    let history = useHistory();
+    const selector = useSelector(state => state);
+    const errors = getUser(selector).errors;
+
+    const initialValues = {
+        email: '',
+        password: ''
+    };
+
+    const [values, setValues] = useState(initialValues);
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleInputChange = e => {
+        const { name, value } = e.target;
+
+        setValues({
+            ...values,
+            [name]: value
+        });
+    };
+
+    const signInButton = async () => {
+        setIsLoading(true);
+        await dispatch(signIn(values, () => history.push('/')));
+        setIsLoading(false);
+        // history.push("/");
+    };
 
     const closeButton = () => {
-        dispatch(push('/'));
-    };
-
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    const inputEmail = event => {
-        setEmail(event.target.value);
-    };
-
-    const inputPassword = event => {
-        setPassword(event.target.value);
-    };
-
-    const signInButton = () => {
-        dispatch(signIn(email, password));
-        setEmail('');
-        setPassword('');
+        dispatch(() => history.push('/'));
     };
 
     return (
-        <>
-            <Header />
+        <div>
             <MainImage />
-
-            <div class="login">
-                <img onClick={closeButton} class="close" src={ImgCloseIcon} alt="" />
-                <div class="logo">
-                    <img src={Logo} alt="" />
-                </div>
-                <div>
-                    <h3>Sign In</h3>
-                </div>
-                <form action="" className="form-loguin">
-                    <h4>Email</h4>
-                    <input type="email" placeholder="Enter email" onChange={inputEmail} value={email} id="" />
-                    <h4>Password</h4>
+            <div class="main2">
+                <div class="signin">
+                    <img onClick={closeButton} class="close" src={ImgCloseIcon} alt="" />
+                    <img class="logo" src={ImgLogoIcon} alt="" />
+                    <p class="head">Sign in</p>
+                    <p>Email</p>
                     <input
-                        type="password"
-                        placeholder="Enter Password"
-                        onChange={inputPassword}
-                        value={password}
-                        id=""
+                        placeholder="Type your email"
+                        name="email"
+                        type="email"
+                        value={values.email}
+                        onChange={handleInputChange}
                     />
-                    <input type="button" value="Sing In" class="button-input" onClick={signInButton} />
+                    <p>Password</p>
+                    <input
+                        placeholder="Type your password"
+                        name="password"
+                        type="password"
+                        value={values.password}
+                        onChange={handleInputChange}
+                    />
+                    <button type="button" onClick={signInButton}>{`${isLoading ? 'Logging In' : 'Login'}`}</button>
                     <a class="joinus" href="/signup">
                         JOIN US
                     </a>
-                </form>
+                </div>
             </div>
-        </>
+        </div>
     );
 }
 
-export default SignIn;
+export default Signin;

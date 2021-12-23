@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import Logo from './Logo';
-import SelectOption from './SelectOption';
-import ImgUseIcon from '../../assets/img/user-icon.png';
-import SearchInput from './SearchInput';
-
+import { useDispatch } from 'react-redux';
+import ImgUseIcon from '../../assets/img/icon-user.svg';
+import ImgLogoIcon from '../../assets/img/icon-logo.svg';
+import Find from './Find';
+import { push } from 'connected-react-router';
+import Option from './option';
 const key = localStorage.getItem('HOME_LOGIN_USER_KEY');
+
+console.log('called out of component');
 
 export default function Header() {
     const [pathname, setPathname] = useState(null);
+    const dispatch = useDispatch();
     const [showOption, setShowOption] = useState(false);
+    const user = JSON.parse(localStorage.getItem('HOME_LOGIN_USER_KEY'));
     const [checkUser, setCheckUser] = useState(false);
 
-    const user = JSON.parse(localStorage.getItem('HOME_LOGIN_USER_KEY'));
-
+    console.log('called above useEffect');
     useEffect(() => {
         console.log('called useEffect');
         setPathname(window.location.pathname);
@@ -23,27 +27,21 @@ export default function Header() {
 
     return (
         <>
-            <div className="navbar-sign">
-                <Logo />
-
-                {checkUser && checkUser != true ? (
+            <nav class="header2">
+                <img class="logo" src={ImgLogoIcon} onClick={() => dispatch(push('/'))} alt="" />
+                <Find />
+                {checkUser && checkUser == true ? (
                     <div class="drop-down" onClick={() => setShowOption(true)}>
                         <img src={ImgUseIcon} alt="" />
                         <button>{user.user_name}</button>
                     </div>
                 ) : (
-                    <div className="navbar-sign-in-up">
-                        <a href="./Signup" className="navbar-sign-up">
-                            Sign up
-                        </a>
-                        /
-                        <a href="./Signin" className="navbar-sign-in">
-                            Sign in
-                        </a>
-                    </div>
+                    <p>
+                        <a href="/signin">SignIn</a>/<a href="signup">SignUp</a>
+                    </p>
                 )}
-            </div>
-            {showOption && <SelectOption setShowOption={setShowOption} />}
+            </nav>
+            {showOption && <Option setShowOption={setShowOption} />}
         </>
     );
 }
