@@ -7,7 +7,7 @@ export const LOGIN_USER_KEY = 'HOME_LOGIN_USER_KEY';
 // } else {
 //     baseURL = 'http://127.0.0.1:8000';
 // }
-baseURL = 'https://backend-yandys.herokuapp.com/';
+baseURL = 'https://dreamhouse-backend.herokuapp.com/';
 
 const api = axios.create({
     baseURL: baseURL,
